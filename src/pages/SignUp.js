@@ -4,9 +4,12 @@ import React from "react";
 class SignUp extends ReactComponent {
 
     render() {
-        return  <div> 
-                    <h1>Hello World</h1>  
-                </div>
+
+        return (
+            <div> 
+                <h1>Hello!</h1>
+            </div>
+        )
     }
 }
 
