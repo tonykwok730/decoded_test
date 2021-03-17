@@ -87,7 +87,7 @@ class SignUp extends React.Component {
                                 <TextField label="Email" placeholder="Enter Email" name="email" id="email" 
                                 fullwidth required onChange={this.handleChange} value={this.state.email}/>
                                 <TextField label="Password" placeholder="Enter Password" name="password" id="password" 
-                                fullwidth required type onChange={this.handleChange} value={this.state.password}/>
+                                fullwidth required type="password" onChange={this.handleChange} value={this.state.password}/>
                                 <Button type="submit" color="primary" variant="contained" fullwidth style={buttonStyle}>SignUp</Button>
                             </form>
                             <Typography>
