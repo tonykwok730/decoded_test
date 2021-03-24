@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import SignUp from './pages/SignUp';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import UserPost from './pages/Components/UserPost';
 
 
 ReactDOM.render(
@@ -14,6 +15,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path='/' component={App}/>
         <Route exact path='/signup' component={SignUp}/>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/home' component={UserPost}/>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

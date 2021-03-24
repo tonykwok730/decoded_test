@@ -29,7 +29,7 @@ class UserPost extends React.Component {
                     <img src={this.props.postImage} alt={this.props.postImageAlt} style={postImageStyle} height="40%"/>
                 </Grid>
                 <Grid container style={postTextStyle}>
-                    <ListItemText primary={this.props.postText} secondary={this.props.postDate/}/>
+                    <ListItemText primary={this.props.postText} secondary={this.props.postDate}/>
                 </Grid>
             </Paper>
         )

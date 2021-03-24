@@ -1,6 +1,9 @@
 import React from "react";
 import { AppBar, Button, Grid, Link, Paper, TextField, Toolbar, Typography, Avatar } from '@material-ui/core';
 import {Redirect} from 'react-router-dom';
+import {
+    authFunctions
+} from '../firebase';
 
 const GridStyle = {
     width: "100%",
@@ -38,13 +41,28 @@ class SignUp extends React.Component {
             lastname: "",
             success: false,
             login: false,
+            uid: null
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.redirectToLogIn = this.redirectToLogIn.bind(this);
     } 
 
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
+    }
+
+    handleSubmit(event) {
+        authFunctions.signUp(
+            this.state.firstname,
+            this.state.lastname,
+            this.state.email,
+            this.state.password
+        );
+        authFunctions.onUserActive((uid) => {
+            this.setState({success: true, uid:uid});
+        });
+        event.preventDefault();
     }
 
     redirectToLogIn() {
@@ -55,6 +73,9 @@ class SignUp extends React.Component {
     render() {
         if (this.state.login) {
             return <Redirect to='./login'/>
+        }
+        if (this.state.success) {
+            return <Redirect to='./home'/>
         }
         return (
             <div> 
@@ -79,7 +100,7 @@ class SignUp extends React.Component {
                                 <Avatar></Avatar>
                                 <h2>Sign Up</h2>
                             </Grid>
-                            <form>
+                            <form onSubmit={this.handleSubmit}>
                                 <TextField label="First Name" placeholder="John" name="firstname" id="firstname" 
                                 fullwidth required autofocus onChange={this.handleChange} value={this.state.firstname}/>
                                 <TextField label="Last Name" placeholder="Appleseed" name="lastname" id="lastname" 
